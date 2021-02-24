@@ -12,12 +12,15 @@ mod types;
 pub use crate::registry::{RegisteredPoStProof, RegisteredSealProof};
 pub use crate::types::{PrivateReplicaInfo, PublicReplicaInfo};
 
-pub use storage_proofs_core::{api_version::ApiVersion, merkle::MerkleTreeTrait, parameter_cache::get_parameter_data, parameter_cache::get_verifying_key_data};
-pub use storage_proofs_core::error::Error as StorageProofsError;
-pub use fr32;
-pub use storage_proofs_core::sector::{OrderedSectorSet, SectorId};
 pub use filecoin_proofs_v1::types::{
     ChallengeSeed, Commitment, PaddedBytesAmount, PieceInfo, PoStType, ProverId, Ticket,
     UnpaddedByteIndex, UnpaddedBytesAmount,
 };
 pub use filecoin_proofs_v1::{FallbackPoStSectorProof, SnarkProof, VanillaProof};
+pub use fr32;
+pub use storage_proofs_core::error::Error as StorageProofsError;
+pub use storage_proofs_core::sector::{OrderedSectorSet, SectorId};
+pub use storage_proofs_core::{
+    api_version::ApiVersion, merkle::MerkleTreeTrait, parameter_cache::get_parameter_data,
+    parameter_cache::get_verifying_key_data,
+};

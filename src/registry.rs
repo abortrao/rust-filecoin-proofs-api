@@ -1,10 +1,7 @@
 use std::path::PathBuf;
 
+use crate::{get_parameter_data, get_verifying_key_data, ApiVersion, MerkleTreeTrait};
 use anyhow::{ensure, Result};
-use crate::{
-    ApiVersion,
-    MerkleTreeTrait,
-    get_parameter_data, get_verifying_key_data};
 use filecoin_proofs_v1::types::{
     PoRepConfig, PoRepProofPartitions, PoStConfig, PoStType, SectorSize,
 };

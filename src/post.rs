@@ -5,8 +5,8 @@ use filecoin_proofs_v1::with_shape;
 
 use crate::types::VanillaProofBytes;
 use crate::{
-    MerkleTreeTrait, ChallengeSeed, FallbackPoStSectorProof, PoStType, PrivateReplicaInfo, ProverId,
-    PublicReplicaInfo, RegisteredPoStProof, SectorId, SnarkProof,
+    ChallengeSeed, FallbackPoStSectorProof, MerkleTreeTrait, PoStType, PrivateReplicaInfo,
+    ProverId, PublicReplicaInfo, RegisteredPoStProof, SectorId, SnarkProof,
 };
 
 pub fn generate_winning_post_sector_challenge(
