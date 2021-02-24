@@ -1,12 +1,11 @@
 use std::collections::BTreeMap;
 
 use anyhow::{ensure, Result};
-use filecoin_proofs_v1::types::MerkleTreeTrait;
 use filecoin_proofs_v1::with_shape;
 
 use crate::types::VanillaProofBytes;
 use crate::{
-    ChallengeSeed, FallbackPoStSectorProof, PoStType, PrivateReplicaInfo, ProverId,
+    MerkleTreeTrait, ChallengeSeed, FallbackPoStSectorProof, PoStType, PrivateReplicaInfo, ProverId,
     PublicReplicaInfo, RegisteredPoStProof, SectorId, SnarkProof,
 };
 

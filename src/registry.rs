@@ -1,9 +1,12 @@
 use std::path::PathBuf;
 
 use anyhow::{ensure, Result};
-use filecoin_proofs_v1::storage_proofs::api_version::ApiVersion;
+use crate::{
+    ApiVersion,
+    MerkleTreeTrait,
+    get_parameter_data, get_verifying_key_data};
 use filecoin_proofs_v1::types::{
-    MerkleTreeTrait, PoRepConfig, PoRepProofPartitions, PoStConfig, PoStType, SectorSize,
+    PoRepConfig, PoRepProofPartitions, PoStConfig, PoStType, SectorSize,
 };
 use filecoin_proofs_v1::{constants, with_shape};
 use serde::{Deserialize, Serialize};
@@ -198,7 +201,7 @@ impl RegisteredSealProof {
         match self.version() {
             ApiVersion::V1_0_0 | ApiVersion::V1_1_0 => {
                 let id = self.circuit_identifier()?;
-                let params = filecoin_proofs_v1::constants::get_verifying_key_data(&id);
+                let params = get_verifying_key_data(&id);
                 ensure!(params.is_some(), "missing params for {}", &id);
 
                 Ok(params
@@ -213,7 +216,7 @@ impl RegisteredSealProof {
         match self.version() {
             ApiVersion::V1_0_0 | ApiVersion::V1_1_0 => {
                 let id = self.circuit_identifier()?;
-                let params = filecoin_proofs_v1::constants::get_parameter_data(&id);
+                let params = get_parameter_data(&id);
                 ensure!(params.is_some(), "missing params for {}", &id);
 
                 Ok(params.expect("param cid failure").cid.clone())
@@ -424,7 +427,7 @@ impl RegisteredPoStProof {
         match self.version() {
             ApiVersion::V1_0_0 => {
                 let id = self.circuit_identifier()?;
-                let params = filecoin_proofs_v1::constants::get_verifying_key_data(&id);
+                let params = get_verifying_key_data(&id);
                 ensure!(params.is_some(), "missing params for {}", &id);
 
                 Ok(params
@@ -440,7 +443,7 @@ impl RegisteredPoStProof {
         match self.version() {
             ApiVersion::V1_0_0 => {
                 let id = self.circuit_identifier()?;
-                let params = filecoin_proofs_v1::constants::get_parameter_data(&id);
+                let params = get_parameter_data(&id);
                 ensure!(params.is_some(), "missing params for {}", &id);
 
                 Ok(params.expect("params cid failure").cid.clone())
